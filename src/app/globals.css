@@ -209,6 +209,183 @@ body > * {
   overflow: clip;
 }
 
+/* ---- Scroll progress · a hydrographic depth sounding --------------------
+   Pure CSS scroll-driven animation. Reading progress is treated as a survey
+   of the dossier's depth: a top rule is inked left→right, and a margin
+   instrument drops a plumb line, its live sounding read out in per-cent.
+   All timing comes from scroll() — no scroll listeners, no JS. ---------- */
+
+/* A registered custom property so its animated value can drive a counter,
+   giving us a live numeric readout in pure CSS. */
+@property --sd-depth {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes sd-ink-x {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes sd-descend-y {
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes sd-plumb {
+  to {
+    top: calc(100% - var(--bead));
+  }
+}
+@keyframes sd-sound {
+  to {
+    --sd-depth: 100;
+  }
+}
+
+/* The top rule: ink drawn across the masthead as the page is read. */
+.sd-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  pointer-events: none;
+}
+
+/* The margin instrument — hidden until we know scroll() is supported and the
+   viewport is wide enough to seat it clear of the content column. */
+.sounding {
+  --track-h: clamp(150px, 24vh, 240px);
+  --bead: 9px;
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  z-index: 40;
+  display: none;
+  align-items: stretch;
+  gap: 0.7rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.sounding__title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  align-self: center;
+  transform: rotate(180deg);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.sounding__gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.sounding__cap {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  color: var(--stone);
+}
+
+/* Fathom-graduated track. */
+.sounding__track {
+  position: relative;
+  width: 3px;
+  height: var(--track-h);
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--line) 0 1px,
+    transparent 1px calc(100% / 8)
+  );
+}
+
+.sounding__fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(0);
+  transform-origin: top center;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+}
+
+/* The plumb weight, riding the track at the current depth. */
+.sounding__bead {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--bead);
+  height: var(--bead);
+  margin-left: calc(var(--bead) / -2);
+  transform: rotate(45deg);
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--paper);
+}
+
+/* Live per-cent sounding, composed from the animated counter + a unit.
+   A reserved width keeps the readout from reflowing as the digit count
+   climbs 0 → 100, so the plumb line above it never shifts sideways. */
+.sounding__read {
+  counter-reset: depth var(--sd-depth);
+  min-width: 2.75rem;
+  text-align: center;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.sounding__read::before {
+  content: counter(depth);
+}
+.sounding__read::after {
+  content: "%";
+  margin-left: 0.05em;
+  font-size: 0.6rem;
+  color: var(--stone);
+}
+
+@supports (animation-timeline: scroll()) {
+  .sd-progress {
+    animation: sd-ink-x linear both;
+    animation-timeline: scroll(root block);
+    animation-duration: auto;
+  }
+  .sounding__fill {
+    animation: sd-descend-y linear both;
+    animation-timeline: scroll(root block);
+    animation-duration: auto;
+  }
+  .sounding__bead {
+    animation: sd-plumb linear both;
+    animation-timeline: scroll(root block);
+    animation-duration: auto;
+  }
+  .sounding__read {
+    animation: sd-sound linear both;
+    animation-timeline: scroll(root block);
+    animation-duration: auto;
+  }
+  /* Seat the instrument only where the margin can hold it clear of content. */
+  @media (min-width: 1360px) {
+    .sounding {
+      display: flex;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -220,5 +397,13 @@ body > * {
   }
   .marquee-track {
     animation: none !important;
+  }
+  /* Scroll-linked indicators track the reader's own scrolling, not autonomous
+     motion — keep them mapped to scroll position rather than snapping to end. */
+  .sd-progress,
+  .sounding__fill,
+  .sounding__bead,
+  .sounding__read {
+    animation-duration: auto !important;
   }
 }

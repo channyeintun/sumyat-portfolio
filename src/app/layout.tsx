@@ -4,6 +4,7 @@ import "./globals.css";
 import { profile } from "@/data/profile";
 import { siteUrl } from "@/lib/site";
 import StructuredData from "@/components/StructuredData";
+import ScrollProgress from "@/components/ScrollProgress";
 
 // Display: a high-contrast, characterful serif for editorial headlines.
 const fraunces = Fraunces({
@@ -110,6 +111,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <StructuredData />
+        <ScrollProgress />
         {children}
       </body>
     </html>
