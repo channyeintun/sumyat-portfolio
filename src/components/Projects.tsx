@@ -24,6 +24,57 @@ function runViewTransition(update: () => void, onDone: () => void) {
   transition.finished.then(onDone, onDone);
 }
 
+function ProjectLogo({ id }: { id: string }) {
+  switch (id) {
+    case "financial-advisory-suite":
+      return (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 p-2.5 text-white shadow-md shadow-cyan-500/20">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M8 11l3 3 5-5" />
+          </svg>
+        </div>
+      );
+    case "reporting-dashboards":
+      return (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-400 p-2.5 text-white shadow-md shadow-blue-500/20">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+        </div>
+      );
+    case "data-pipeline":
+      return (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-2.5 text-white shadow-md shadow-emerald-500/20">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3" />
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+          </svg>
+        </div>
+      );
+    case "api-test-framework":
+      return (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-teal-500 to-cyan-500 p-2.5 text-white shadow-md shadow-indigo-500/20">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+        </div>
+      );
+    default:
+      return (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 p-2.5 text-white shadow-md">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+      );
+  }
+}
+
 export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
@@ -95,51 +146,63 @@ export default function Projects() {
                   viewTransitionName:
                     pendingId === project.id ? SHARED_NAME : undefined,
                 }}
-                className="group flex h-full w-full flex-col rounded-2xl border border-slate-200 bg-white p-8 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+                className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-7 text-left shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-300/80 hover:shadow-xl hover:shadow-cyan-950/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-xs font-semibold tracking-wider text-cyan-600 uppercase">
-                    {project.category}
-                  </span>
-                  <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700">
-                    {project.metric}
-                  </span>
+                {/* Top subtle gradient accent line */}
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 opacity-80 group-hover:h-1.5 transition-all duration-300" />
+
+                {/* Logo & Category / Metric Row */}
+                <div className="flex items-start justify-between gap-4">
+                  <ProjectLogo id={project.id} />
+                  <div className="flex flex-col items-end gap-1.5">
+                    <span className="rounded-full border border-cyan-200/70 bg-cyan-50/80 px-2.5 py-0.5 text-[11px] font-bold text-cyan-800 uppercase tracking-wider">
+                      {project.category}
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      {project.metric}
+                    </span>
+                  </div>
                 </div>
 
-                <h3 className="mt-4 text-xl font-bold text-slate-900 transition group-hover:text-cyan-700">
-                  {project.title}
-                </h3>
+                {/* Title & Metadata */}
+                <div className="mt-5">
+                  <h3 className="font-title text-xl font-extrabold text-slate-900 transition duration-300 group-hover:text-cyan-700">
+                    {project.title}
+                  </h3>
+                  <div className="mt-1.5 flex items-center gap-2 text-xs font-medium text-slate-500">
+                    <span>🏢 {project.timeline}</span>
+                    <span>•</span>
+                    <span className="text-cyan-700 font-semibold">{project.role}</span>
+                  </div>
+                </div>
 
+                {/* Description */}
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                   {project.description}
                 </p>
 
-                <ul className="mt-6 flex flex-wrap gap-2">
+                {/* Tags */}
+                <ul className="mt-5 flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+                      className="rounded-lg border border-slate-200/60 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600 transition group-hover:border-cyan-200/60 group-hover:bg-cyan-50/40 group-hover:text-slate-800"
                     >
                       {tag}
                     </li>
                   ))}
                 </ul>
 
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-cyan-600">
-                  View details
-                  <svg
-                    className="h-4 w-4 transition group-hover:translate-x-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.21 3.79a.75.75 0 011.06 0l5.5 5.5a.75.75 0 010 1.06l-5.5 5.5a.75.75 0 11-1.06-1.06L11.94 10 7.21 5.27a.75.75 0 010-1.06z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
+                {/* Action CTA Link */}
+                <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-bold text-cyan-600 transition duration-300 group-hover:text-cyan-700">
+                  <span className="inline-flex items-center gap-1">
+                    Explore Case Study
+                  </span>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-50 text-cyan-600 transition duration-300 group-hover:translate-x-1 group-hover:bg-cyan-600 group-hover:text-white">
+                    →
+                  </span>
+                </div>
               </button>
             </Reveal>
           ))}
