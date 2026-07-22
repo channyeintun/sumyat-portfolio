@@ -9,6 +9,12 @@ const meta = [
   { k: "Availability", v: `Open — ${profile.availability} notice` },
 ];
 
+const outcomes = [
+  { value: "50+", label: "User stories & functional specifications" },
+  { value: "5", label: "Global time zones aligned" },
+  { value: "−20%", label: "Manual reporting time" },
+];
+
 export default function Hero() {
   return (
     <section
@@ -130,6 +136,29 @@ export default function Hero() {
             <HeroPhoto />
           </div>
         </div>
+      </div>
+
+      {/* Recruiter-speed proof points — the strongest outcomes above the fold. */}
+      <div className="relative z-10 border-t border-ink bg-paper-2/80">
+        <dl className="mx-auto grid max-w-6xl sm:grid-cols-3 sm:px-8">
+          {outcomes.map((outcome, index) => (
+            <div
+              key={outcome.value}
+              className={`grid grid-cols-[auto_1fr] items-center gap-4 border-line px-5 py-5 sm:block sm:px-6 sm:py-7 ${
+                index < outcomes.length - 1
+                  ? "border-b sm:border-b-0 sm:border-r"
+                  : ""
+              }`}
+            >
+              <dt className="font-display text-4xl font-semibold leading-none text-accent sm:text-5xl">
+                {outcome.value}
+              </dt>
+              <dd className="label leading-relaxed text-ink sm:mt-3">
+                {outcome.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
 
       {/* Running toolkit ticker */}
