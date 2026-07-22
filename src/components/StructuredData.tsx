@@ -26,7 +26,7 @@ export default function StructuredData() {
     jobTitle: profile.title,
     description: profile.summary,
     url: siteUrl,
-    image: `${siteUrl}/profile.png`,
+    image: `${siteUrl}/profile.webp`,
     email: `mailto:${profile.email}`,
     address: {
       "@type": "PostalAddress",

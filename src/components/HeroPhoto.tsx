@@ -1,6 +1,6 @@
 import { profile } from "@/data/profile";
 
-const PHOTO_SRC = "/profile.png";
+const PHOTO_SRC = "/profile.webp";
 
 /** Corner registration marks — the crop ticks of a print plate. */
 function CropMark({ className }: { className: string }) {
