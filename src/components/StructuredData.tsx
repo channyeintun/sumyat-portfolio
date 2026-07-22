@@ -6,6 +6,7 @@ import {
   education,
   certifications,
   languages,
+  faqs,
 } from "@/data/profile";
 import { siteUrl } from "@/lib/site";
 
@@ -74,9 +75,21 @@ export default function StructuredData() {
     publisher: { "@id": personId },
   };
 
+  const faqPage = {
+    "@type": "FAQPage",
+    "@id": `${siteUrl}/#faq`,
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": personId },
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [website, profilePage, person],
+    "@graph": [website, profilePage, person, faqPage],
   };
 
   return (

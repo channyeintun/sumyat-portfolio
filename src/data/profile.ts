@@ -199,3 +199,32 @@ export const languages = [
   { name: "Burmese", level: "Native" },
   { name: "Japanese / Korean", level: "Basic" },
 ];
+
+// Written as direct, self-contained answers — these double as the visible FAQ
+// and as FAQPage structured data that answer engines quote verbatim.
+export const faqs = [
+  {
+    q: "What does Su Myat Noe specialize in?",
+    a: "Su Myat Noe is an IT Business Analyst specializing in financial technology. Her focus areas are requirements elicitation and management, BPMN workflow modeling, and financial reporting and business intelligence — turning business needs into clear, executable technical specifications.",
+  },
+  {
+    q: "How much experience does she have?",
+    a: "She has 3+ years of progressive, fully remote experience as a Business Analyst, leading multiple complex projects from initiation to deployment while collaborating with stakeholders across five global time zones.",
+  },
+  {
+    q: "Is Su available for new roles or remote work?",
+    a: "Yes. She is open to Business Analyst opportunities — remote or on-site — and can typically start within about one month's notice. She has worked fully remotely for over three years.",
+  },
+  {
+    q: "What tools and technologies does she use?",
+    a: "JIRA, Confluence and ClickUp for Agile delivery; Postman for API testing; SQL and Python (Pandas) for data automation; Power BI and advanced Excel for reporting and forecasting; and Lucidchart, Draw.io and Figma for BPMN and process modeling.",
+  },
+  {
+    q: "What measurable impact has she delivered?",
+    a: "Among other results, she documented 50+ user stories and functional specs for fintech advisory products, built Power BI dashboards giving management real-time KPI visibility, and automated data pipelines with SQL and Python that cut manual reporting time by roughly 20%.",
+  },
+  {
+    q: "Where is she based and how can I contact her?",
+    a: "She is based in Da Nang, Vietnam and available for remote roles worldwide. The best way to reach her is by email at sumyatnoe906@gmail.com or via LinkedIn at linkedin.com/in/sumyatnoe99.",
+  },
+];

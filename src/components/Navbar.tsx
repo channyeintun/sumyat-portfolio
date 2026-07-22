@@ -8,7 +8,8 @@ const links = [
   { href: "#projects", label: "Case Files", index: "02" },
   { href: "#skills", label: "Competencies", index: "03" },
   { href: "#education", label: "Credentials", index: "04" },
-  { href: "#contact", label: "Correspond", index: "05" },
+  { href: "#faq", label: "FAQ", index: "05" },
+  { href: "#contact", label: "Correspond", index: "06" },
 ];
 
 export default function Navbar() {

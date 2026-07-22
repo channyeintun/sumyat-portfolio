@@ -19,7 +19,7 @@ export default function Contact() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <SectionHeading
-            index="05"
+            index="06"
             eyebrow="Open Correspondence"
             title="Let's write the next spec together."
             dark
