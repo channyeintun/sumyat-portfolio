@@ -19,7 +19,9 @@ export const experience = [
     company: "Alphared Solutions, Malaysia",
     mode: "Remote",
     period: "Feb 2026 – Now",
-    bullets: [] as string[],
+    bullets: [
+      "Current appointment with Alphared Solutions in Malaysia, working remotely as a Business System Analyst since February 2026. Verified project scope and outcomes will be added as the engagement progresses.",
+    ],
   },
   {
     role: "Business Analyst",
