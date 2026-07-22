@@ -24,57 +24,6 @@ function runViewTransition(update: () => void, onDone: () => void) {
   transition.finished.then(onDone, onDone);
 }
 
-function ProjectLogo({ id }: { id: string }) {
-  switch (id) {
-    case "financial-advisory-suite":
-      return (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 p-2.5 text-white shadow-md shadow-cyan-500/20">
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <path d="M8 11l3 3 5-5" />
-          </svg>
-        </div>
-      );
-    case "reporting-dashboards":
-      return (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-400 p-2.5 text-white shadow-md shadow-blue-500/20">
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10" />
-            <line x1="12" y1="20" x2="12" y2="4" />
-            <line x1="6" y1="20" x2="6" y2="14" />
-          </svg>
-        </div>
-      );
-    case "data-pipeline":
-      return (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-2.5 text-white shadow-md shadow-emerald-500/20">
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <ellipse cx="12" cy="5" rx="9" ry="3" />
-            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-          </svg>
-        </div>
-      );
-    case "api-test-framework":
-      return (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-teal-500 to-cyan-500 p-2.5 text-white shadow-md shadow-indigo-500/20">
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-          </svg>
-        </div>
-      );
-    default:
-      return (
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 p-2.5 text-white shadow-md">
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-          </svg>
-        </div>
-      );
-  }
-}
-
 export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
@@ -129,78 +78,70 @@ export default function Projects() {
   }, [active, close]);
 
   return (
-    <section id="projects" className="scroll-mt-20 bg-sky-50 py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-6">
+    <section
+      id="projects"
+      className="scroll-mt-16 border-b border-ink bg-paper-2 py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <SectionHeading eyebrow="Selected Work" title="Projects" />
+          <SectionHeading
+            index="02"
+            eyebrow="Selected Case Files"
+            title="Evidence of the work."
+          />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-px border border-ink bg-ink md:grid-cols-2">
           {projects.map((project, index) => (
-            <Reveal key={project.id} delay={index * 120}>
+            <Reveal key={project.id} delay={index * 90}>
               <button
                 type="button"
                 onClick={() => open(project)}
-                aria-label={`View details for ${project.title}`}
+                aria-label={`View case file for ${project.title}`}
                 style={{
                   viewTransitionName:
                     pendingId === project.id ? SHARED_NAME : undefined,
                 }}
-                className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-7 text-left shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-300/80 hover:shadow-xl hover:shadow-cyan-950/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+                className="group relative flex h-full w-full flex-col bg-paper p-7 text-left transition-colors duration-300 hover:bg-paper-3 focus:outline-none focus-visible:bg-paper-3 sm:p-8"
               >
-                {/* Top subtle gradient accent line */}
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 opacity-80 group-hover:h-1.5 transition-all duration-300" />
-
-                {/* Logo & Category / Metric Row */}
-                <div className="flex items-start justify-between gap-4">
-                  <ProjectLogo id={project.id} />
-                  <div className="flex flex-col items-end gap-1.5">
-                    <span className="rounded-full border border-cyan-200/70 bg-cyan-50/80 px-2.5 py-0.5 text-[11px] font-bold text-cyan-800 uppercase tracking-wider">
-                      {project.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                      {project.metric}
-                    </span>
-                  </div>
+                {/* Case number + metric */}
+                <div className="flex items-baseline justify-between">
+                  <span className="font-display text-5xl font-semibold leading-none text-ink/12 transition-colors group-hover:text-accent/25">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="mono text-right text-sm font-bold text-accent tnum">
+                    {project.metric}
+                  </span>
                 </div>
 
-                {/* Title & Metadata */}
-                <div className="mt-5">
-                  <h3 className="font-title text-xl font-extrabold text-slate-900 transition duration-300 group-hover:text-cyan-700">
-                    {project.title}
-                  </h3>
-                  <div className="mt-1.5 flex items-center gap-2 text-xs font-medium text-slate-500">
-                    <span>🏢 {project.timeline}</span>
-                    <span>•</span>
-                    <span className="text-cyan-700 font-semibold">{project.role}</span>
-                  </div>
-                </div>
+                <span className="label mt-6 text-stone">
+                  {project.category}
+                </span>
+                <h3 className="font-display mt-2 text-2xl font-semibold leading-tight text-ink">
+                  {project.title}
+                </h3>
 
-                {/* Description */}
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-ink-2">
                   {project.description}
                 </p>
 
                 {/* Tags */}
-                <ul className="mt-5 flex flex-wrap gap-1.5">
+                <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1">
                   {project.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="rounded-lg border border-slate-200/60 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600 transition group-hover:border-cyan-200/60 group-hover:bg-cyan-50/40 group-hover:text-slate-800"
-                    >
-                      {tag}
+                    <li key={tag} className="mono text-[0.7rem] text-stone">
+                      / {tag}
                     </li>
                   ))}
                 </ul>
 
-                {/* Action CTA Link */}
-                <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-bold text-cyan-600 transition duration-300 group-hover:text-cyan-700">
-                  <span className="inline-flex items-center gap-1">
-                    Explore Case Study
-                  </span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-50 text-cyan-600 transition duration-300 group-hover:translate-x-1 group-hover:bg-cyan-600 group-hover:text-white">
-                    →
+                {/* Footer rule */}
+                <div className="mt-6 flex items-center justify-between border-t border-line pt-4">
+                  <span className="mono text-xs text-ink">{project.timeline}</span>
+                  <span className="label flex items-center gap-2 text-ink transition-colors group-hover:text-accent">
+                    Open file
+                    <span className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
                   </span>
                 </div>
               </button>
@@ -209,21 +150,23 @@ export default function Projects() {
         </div>
       </div>
 
-      {active && <ProjectModal project={active} onClose={close} />}
+      {active && <ProjectModal project={active} index={projects.indexOf(active)} onClose={close} />}
     </section>
   );
 }
 
 function ProjectModal({
   project,
+  index,
   onClose,
 }: {
   project: Project;
+  index: number;
   onClose: () => void;
 }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-slate-900/60 p-4 backdrop-blur-sm sm:items-center sm:p-6"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-ink/45 p-3 backdrop-blur-[2px] sm:items-center sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -232,73 +175,69 @@ function ProjectModal({
       <div
         onClick={(e) => e.stopPropagation()}
         style={{ viewTransitionName: SHARED_NAME }}
-        className="relative my-8 w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative my-6 w-full max-w-2xl border border-ink bg-paper shadow-[12px_12px_0_0_var(--ink)]"
       >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900"
-        >
-          <svg
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
+        {/* File header bar */}
+        <div className="flex items-center justify-between border-b border-ink bg-ink px-6 py-3 text-paper">
+          <span className="label">
+            Case File № {String(index + 1).padStart(2, "0")}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="label flex items-center gap-2 transition-colors hover:text-accent"
           >
-            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-          </svg>
-        </button>
+            Close <span aria-hidden>✕</span>
+          </button>
+        </div>
 
-        <div className="p-8 sm:p-10">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-semibold tracking-wider text-cyan-600 uppercase">
-              {project.category}
-            </span>
-            <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700">
-              {project.metric}
-            </span>
-          </div>
-
+        <div className="p-6 sm:p-7">
+          <span className="label text-stone">{project.category}</span>
           <h3
             id="project-modal-title"
-            className="font-title mt-4 text-2xl font-black text-slate-900 sm:text-3xl"
+            className="font-display mt-1.5 text-2xl font-semibold leading-tight text-ink sm:text-3xl"
           >
             {project.title}
           </h3>
 
-          <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-500">
-            <span>
-              <span className="font-semibold text-slate-700">Role:</span>{" "}
-              {project.role}
-            </span>
-            <span>
-              <span className="font-semibold text-slate-700">Where:</span>{" "}
-              {project.timeline}
-            </span>
-          </div>
+          {/* Meta strip */}
+          <dl className="mt-4 grid grid-cols-2 gap-px border border-ink bg-ink sm:grid-cols-3">
+            {[
+              { k: "Role", v: project.role },
+              { k: "Engagement", v: project.timeline },
+              { k: "Outcome", v: project.metric },
+            ].map((row) => (
+              <div key={row.k} className="bg-paper px-3.5 py-3">
+                <dt className="label text-stone">{row.k}</dt>
+                <dd className="mono mt-1 text-sm text-ink">{row.v}</dd>
+              </div>
+            ))}
+          </dl>
 
-          <div className="mt-6 space-y-6">
+          <div className="mt-6 space-y-5">
             <section>
-              <h4 className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                The Challenge
+              <h4 className="label border-b border-line pb-1.5 text-accent">
+                01 · The Challenge
               </h4>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2.5 text-[0.9rem] leading-relaxed text-ink-2">
                 {project.problem}
               </p>
             </section>
 
             <section>
-              <h4 className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                Approach
+              <h4 className="label border-b border-line pb-1.5 text-accent">
+                02 · Approach
               </h4>
-              <ul className="mt-2 space-y-2">
-                {project.approach.map((item) => (
+              <ul className="mt-2.5 space-y-2">
+                {project.approach.map((item, i) => (
                   <li
                     key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-slate-600"
+                    className="grid grid-cols-[auto_1fr] gap-3 text-[0.9rem] leading-relaxed text-ink-2"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
+                    <span className="mono text-xs text-stone tnum">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -306,27 +245,16 @@ function ProjectModal({
             </section>
 
             <section>
-              <h4 className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-                Impact
+              <h4 className="label border-b border-line pb-1.5 text-accent">
+                03 · Impact
               </h4>
-              <ul className="mt-2 space-y-2">
+              <ul className="mt-2.5 space-y-2">
                 {project.impact.map((item) => (
                   <li
                     key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-slate-600"
+                    className="grid grid-cols-[auto_1fr] gap-3 text-[0.9rem] leading-relaxed text-ink-2"
                   >
-                    <svg
-                      className="mt-0.5 h-4 w-4 shrink-0 text-teal-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.79 6.8-6.79a1 1 0 011.4 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -334,13 +262,10 @@ function ProjectModal({
             </section>
           </div>
 
-          <ul className="mt-8 flex flex-wrap gap-2 border-t border-slate-100 pt-6">
+          <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-1 border-t border-ink pt-4">
             {project.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
-              >
-                {tag}
+              <li key={tag} className="mono text-xs text-stone">
+                / {tag}
               </li>
             ))}
           </ul>

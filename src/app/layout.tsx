@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Merriweather } from "next/font/google";
+import { Fraunces, Archivo, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Display: a high-contrast, characterful serif for editorial headlines.
+const fraunces = Fraunces({
+  variable: "--font-display",
+  subsets: ["latin"],
+  axes: ["opsz", "SOFT", "WONK"],
+});
+
+// Body / UI: a sturdy grotesque with more personality than the usual suspects.
+const archivo = Archivo({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Technical annotations, reference codes, tabular figures.
+const spaceMono = Space_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
-});
-
-const merriweather = Merriweather({
-  variable: "--font-title",
-  subsets: ["latin"],
-  weight: ["700", "900"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Su Myat Noe | IT Business Analyst",
+  title: "Su Myat Noe — IT Business Analyst / A Working Dossier",
   description:
-    "Portfolio of Su Myat Noe (Su), an IT Business Analyst specializing in fintech, requirements management, and data-driven process improvement.",
+    "The working dossier of Su Myat Noe, an IT Business Analyst specializing in fintech: requirements, BPMN workflow modeling, and data-driven process improvement.",
 };
 
 export default function RootLayout({
@@ -32,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${merriweather.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${archivo.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

@@ -4,36 +4,50 @@ import { education, certifications, languages } from "@/data/profile";
 
 export default function Education() {
   return (
-    <section id="education" className="scroll-mt-20 bg-sky-50 py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-6">
+    <section
+      id="education"
+      className="scroll-mt-16 border-b border-ink bg-paper-2 py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <SectionHeading eyebrow="Background" title="Education & Credentials" />
+          <SectionHeading
+            index="04"
+            eyebrow="Credentials & Record"
+            title="On paper, formally."
+          />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-px border border-ink bg-ink md:grid-cols-3">
+          {/* Education */}
           <Reveal delay={0}>
-            <div className="h-full rounded-2xl border border-slate-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-md">
-              <h3 className="text-lg font-bold text-slate-900">Education</h3>
-              <p className="mt-4 text-sm font-semibold text-slate-800">
+            <div className="flex h-full flex-col bg-paper p-7">
+              <span className="label text-stone">Education</span>
+              <p className="font-display mt-4 text-lg font-semibold leading-snug text-ink">
                 {education.degree}
               </p>
-              <p className="mt-1 text-sm text-slate-600">{education.school}</p>
-              <p className="mt-1 text-sm text-teal-600">{education.period}</p>
-              <p className="mt-3 text-xs italic text-slate-400">
+              <p className="mt-2 text-sm text-ink-2">{education.school}</p>
+              <p className="mono mt-1 text-sm text-accent-2 tnum">
+                {education.period}
+              </p>
+              <p className="mono mt-auto pt-4 text-xs italic text-stone">
                 {education.note}
               </p>
             </div>
           </Reveal>
 
-          <Reveal delay={120}>
-            <div className="h-full rounded-2xl border border-slate-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-md">
-              <h3 className="text-lg font-bold text-slate-900">
-                Certifications
-              </h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                {certifications.map((cert) => (
-                  <li key={cert} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
+          {/* Certifications */}
+          <Reveal delay={100}>
+            <div className="flex h-full flex-col bg-paper p-7">
+              <span className="label text-stone">Certifications</span>
+              <ul className="mt-4 space-y-3">
+                {certifications.map((cert, i) => (
+                  <li
+                    key={cert}
+                    className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-snug text-ink-2"
+                  >
+                    <span className="mono text-xs text-accent tnum">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span>{cert}</span>
                   </li>
                 ))}
@@ -41,19 +55,21 @@ export default function Education() {
             </div>
           </Reveal>
 
-          <Reveal delay={240}>
-            <div className="h-full rounded-2xl border border-slate-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-md">
-              <h3 className="text-lg font-bold text-slate-900">Languages</h3>
-              <ul className="mt-4 space-y-3 text-sm">
+          {/* Languages */}
+          <Reveal delay={200}>
+            <div className="flex h-full flex-col bg-paper p-7">
+              <span className="label text-stone">Languages</span>
+              <ul className="mt-4">
                 {languages.map((lang) => (
                   <li
                     key={lang.name}
-                    className="flex items-center justify-between"
+                    className="flex items-baseline border-b border-line-2 py-2.5 last:border-b-0"
                   >
-                    <span className="text-slate-700">{lang.name}</span>
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
-                      {lang.level}
+                    <span className="text-sm font-medium text-ink">
+                      {lang.name}
                     </span>
+                    <span className="leader" />
+                    <span className="mono text-xs text-stone">{lang.level}</span>
                   </li>
                 ))}
               </ul>

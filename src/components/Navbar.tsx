@@ -1,74 +1,118 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
 
 const links = [
-  { href: "#top", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
+  { href: "#experience", label: "Record", index: "01" },
+  { href: "#projects", label: "Case Files", index: "02" },
+  { href: "#skills", label: "Competencies", index: "03" },
+  { href: "#education", label: "Credentials", index: "04" },
+  { href: "#contact", label: "Correspond", index: "05" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-[var(--background)]/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-bold text-slate-900">
-          Su<span className="text-teal-600">.</span>
+    <header
+      className={`sticky top-0 z-50 border-b bg-paper/95 backdrop-blur-sm transition-colors ${
+        scrolled ? "border-line" : "border-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-stretch justify-between px-5 sm:px-8">
+        {/* Masthead identity */}
+        <a
+          href="#top"
+          className="group flex flex-col justify-center border-r border-line py-3 pr-5 sm:pr-8"
+        >
+          <span className="font-display text-lg font-semibold leading-none tracking-tight text-ink">
+            Su Myat Noe
+          </span>
+          <span className="label mt-1 text-stone">
+            Business Analyst<span className="text-accent">.</span>
+          </span>
         </a>
 
-        <ul className="hidden gap-8 text-sm font-medium text-slate-600 md:flex">
+        {/* Numbered index */}
+        <nav className="hidden flex-1 items-stretch md:flex">
           {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="group relative py-1 transition hover:text-teal-600"
-              >
-                {link.label}
-                <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-teal-600 transition-transform duration-300 origin-left group-hover:scale-x-100" />
-              </a>
-            </li>
+            <a
+              key={link.href}
+              href={link.href}
+              className="group flex flex-1 items-center justify-center gap-2 border-r border-line px-2 text-ink transition-colors hover:bg-paper-2"
+            >
+              <span className="mono text-[0.65rem] text-stone group-hover:text-accent">
+                {link.index}
+              </span>
+              <span className="text-sm font-medium">{link.label}</span>
+            </a>
           ))}
-        </ul>
+        </nav>
 
+        {/* Contact call */}
         <a
           href={`mailto:${profile.email}`}
-          className="hidden rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-md md:inline-block"
+          className="hidden items-center gap-2 bg-ink px-6 text-paper transition-colors hover:bg-accent md:flex"
         >
-          Hire Me
+          <span className="label">Enquire</span>
+          <span aria-hidden>→</span>
         </a>
 
+        {/* Mobile toggle */}
         <button
           type="button"
           aria-label="Toggle menu"
-          className="flex flex-col gap-1.5 md:hidden"
+          aria-expanded={open}
+          className="flex items-center gap-2 py-4 md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="h-0.5 w-6 bg-slate-900" />
-          <span className="h-0.5 w-6 bg-slate-900" />
-          <span className="h-0.5 w-6 bg-slate-900" />
+          <span className="label text-ink">{open ? "Close" : "Index"}</span>
+          <span className="flex flex-col gap-1.5">
+            <span
+              className={`h-px w-6 bg-ink transition-transform ${
+                open ? "translate-y-[3.5px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-6 bg-ink transition-transform ${
+                open ? "-translate-y-[3.5px] -rotate-45" : ""
+              }`}
+            />
+          </span>
         </button>
-      </nav>
+      </div>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-slate-200 bg-[var(--background)] px-6 py-4 text-sm font-medium text-slate-700 md:hidden">
+        <nav className="border-t border-line bg-paper md:hidden">
           {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="block py-2"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            </li>
+            <a
+              key={link.href}
+              href={link.href}
+              className="flex items-center gap-3 border-b border-line-2 px-6 py-4 text-ink"
+              onClick={() => setOpen(false)}
+            >
+              <span className="mono text-xs text-accent">{link.index}</span>
+              <span className="text-base font-medium">{link.label}</span>
+            </a>
           ))}
-        </ul>
+          <a
+            href={`mailto:${profile.email}`}
+            className="flex items-center gap-3 bg-ink px-6 py-4 text-paper"
+            onClick={() => setOpen(false)}
+          >
+            <span className="mono text-xs text-accent">→</span>
+            <span className="text-base font-medium">Enquire</span>
+          </a>
+        </nav>
       )}
     </header>
   );

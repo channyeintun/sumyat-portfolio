@@ -2,44 +2,65 @@ import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import { technicalSkills, softSkills } from "@/data/profile";
 
-function SkillList({
+function Index({
+  code,
   title,
   items,
 }: {
+  code: string;
   title: string;
   items: string[];
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-      <h3 className="mb-6 text-lg font-bold text-slate-900">{title}</h3>
-      <ul className="flex flex-wrap gap-2">
-        {items.map((item) => (
+    <div>
+      <div className="mb-2 flex items-baseline justify-between border-b-2 border-ink pb-2">
+        <h3 className="font-display text-xl font-semibold text-ink">{title}</h3>
+        <span className="mono text-xs text-stone">{code}</span>
+      </div>
+      <ol>
+        {items.map((item, i) => (
           <li
             key={item}
-            className="rounded-full bg-[#f0f9ff] px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-[#e0f2fe] transition duration-200 hover:-translate-y-0.5 hover:bg-[#e0f2fe]"
+            className="group flex items-baseline border-b border-line-2 py-3 transition-colors hover:text-accent"
           >
-            {item}
+            <span className="mono w-9 shrink-0 text-xs text-stone tnum group-hover:text-accent">
+              {code}.{String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="text-[0.95rem] font-medium text-ink group-hover:text-accent">
+              {item}
+            </span>
+            <span className="leader" />
+            <span className="mono text-[0.65rem] text-stone opacity-0 transition-opacity group-hover:opacity-100">
+              ●
+            </span>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-20 bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-6">
+    <section
+      id="skills"
+      className="scroll-mt-16 border-b border-ink bg-paper py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <SectionHeading eyebrow="Toolkit" title="Skills" />
+          <SectionHeading
+            index="03"
+            eyebrow="Competency Index"
+            title="What I bring to the table."
+          />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-x-16 gap-y-12 md:grid-cols-2">
           <Reveal delay={0}>
-            <SkillList title="Technical Skills" items={technicalSkills} />
+            <Index code="T" title="Technical" items={technicalSkills} />
           </Reveal>
-          <Reveal delay={120}>
-            <SkillList title="Soft Skills" items={softSkills} />
+          <Reveal delay={100}>
+            <Index code="S" title="Practice & People" items={softSkills} />
           </Reveal>
         </div>
       </div>
