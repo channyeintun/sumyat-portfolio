@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</helmet>
+<div id="social-card" style="width:1200px;height:630px;position:relative;background:#e7eef1;font-family:Archivo,system-ui,sans-serif;color:#10242f;overflow:hidden">
+
+  <!-- registration / crop marks -->
+  <span style="position:absolute;top:22px;left:22px;width:18px;height:18px;border-top:1.5px solid #0f78ab;border-left:1.5px solid #0f78ab"></span>
+  <span style="position:absolute;top:22px;right:22px;width:18px;height:18px;border-top:1.5px solid #0f78ab;border-right:1.5px solid #0f78ab"></span>
+  <span style="position:absolute;bottom:22px;left:22px;width:18px;height:18px;border-bottom:1.5px solid #0f78ab;border-left:1.5px solid #0f78ab"></span>
+  <span style="position:absolute;bottom:22px;right:22px;width:18px;height:18px;border-bottom:1.5px solid #0f78ab;border-right:1.5px solid #0f78ab"></span>
+
+  <!-- top strip -->
+  <div style="position:absolute;top:46px;left:56px;right:56px;display:flex;align-items:baseline;justify-content:space-between;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.24em;text-transform:uppercase">
+    <span style="color:#10242f"><span style="color:#0f78ab">&sect;</span>&nbsp;&nbsp;Working Dossier</span>
+    <span style="color:#6d8794">Fintech &middot; Requirements &middot; BI</span>
+  </div>
+  <div style="position:absolute;top:76px;left:56px;right:56px;height:1px;background:#b7c9d0"></div>
+
+  <!-- vertical divider -->
+  <div style="position:absolute;top:100px;bottom:96px;left:788px;width:1px;background:#b7c9d0"></div>
+
+  <!-- right third: bathymetric basin -->
+  <div style="position:absolute;top:100px;bottom:96px;left:812px;right:56px;overflow:hidden">
+    <img src="assets/card-contours.svg" alt="" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:118%;height:118%;object-fit:cover;opacity:0.9"/>
+    <span style="position:absolute;top:14px;right:6px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#0a567c;opacity:0.75">16&deg;03&prime;N</span>
+    <span style="position:absolute;bottom:60px;left:2px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#0a567c;opacity:0.7">&minus;240</span>
+    <span style="position:absolute;bottom:14px;right:6px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#0a567c;opacity:0.75">108&deg;12&prime;E</span>
+  </div>
+
+  <!-- left two-thirds: masthead -->
+  <div style="position:absolute;top:100px;bottom:96px;left:56px;width:706px;display:flex;flex-direction:column;justify-content:center">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#6d8794">
+      <span style="color:#0f78ab">&sect;00</span>
+      <span style="flex:0 0 46px;border-bottom:1px dotted #b7c9d0;transform:translateY(-3px)"></span>
+      <span>Title Card</span>
+    </div>
+    <h1 style="margin:0;font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;font-weight:600;font-size:150px;line-height:0.84;letter-spacing:-0.025em;color:#10242f">
+      Su Myat<br><span style="font-style:italic;font-weight:500;color:#0f78ab">Noe.</span>
+    </h1>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:34px">
+      <span style="width:34px;height:2px;background:#0f78ab"></span>
+      <span style="font-family:'Space Mono',monospace;font-size:19px;letter-spacing:0.34em;text-transform:uppercase;color:#10242f">IT Business Analyst</span>
+    </div>
+  </div>
+
+  <!-- bottom strip -->
+  <div style="position:absolute;bottom:66px;left:56px;right:56px;height:1px;background:#b7c9d0"></div>
+  <div style="position:absolute;bottom:40px;left:56px;right:56px;display:flex;align-items:baseline;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6d8794">
+    <span>Ref. SMN &middot; Rev. 2026</span>
+    <span>linkedin.com/in/sumyatnoe99</span>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:630}}"></script>
+</body>
+</html>

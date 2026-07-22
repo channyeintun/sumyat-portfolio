@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</helmet>
+<div id="monogram-sheet" style="box-sizing:border-box;width:1200px;height:780px;position:relative;background:#e7eef1;font-family:Archivo,system-ui,sans-serif;color:#10242f;overflow:hidden;padding:46px 56px 52px">
+
+  <div style="display:flex;align-items:baseline;justify-content:space-between;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.24em;text-transform:uppercase">
+    <span><span style="color:#0f78ab">&sect;</span>&nbsp;&nbsp;Plate III &middot; Monogram</span>
+    <span style="color:#6d8794">SM &middot; Interlocked &middot; 512&sup2;</span>
+  </div>
+  <div style="height:1px;background:#b7c9d0;margin-top:16px"></div>
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:26px">
+    <h1 style="margin:0;font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 144;font-weight:600;font-size:64px;line-height:0.9;letter-spacing:-0.02em;color:#10242f">The <span style="font-style:italic;font-weight:500;color:#0f78ab">Mark.</span></h1>
+    <p style="margin:0 0 6px;max-width:380px;font-size:15px;line-height:1.5;color:#3a5563">Initials S and M interlocked on a draughtsman&rsquo;s construction &mdash; the S struck from two tangent circles, the M from straight stems. Hairline throughout.</p>
+  </div>
+
+  <div style="display:flex;gap:38px;margin-top:30px">
+    <!-- construction plate -->
+    <div>
+      <div style="width:402px;height:402px;border:1px solid #b7c9d0;background:#e7eef1;position:relative;overflow:hidden">
+        <img id="mono-512" src="assets/monogram.svg" alt="SM monogram" style="width:100%;height:100%;display:block"/>
+      </div>
+      <div style="margin-top:10px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#6d8794"><span>Construction &middot; primary</span><span>512 &times; 512</span></div>
+    </div>
+
+    <!-- variants column -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;gap:24px">
+        <div>
+          <div style="width:150px;height:150px;border:1px solid #b7c9d0;background:#e7eef1;position:relative;overflow:hidden">
+            <img id="mono-navy" src="assets/monogram-navy.svg" alt="SM navy" style="width:100%;height:100%;display:block"/>
+          </div>
+          <div style="margin-top:9px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#6d8794">Navy &middot; transparent</div>
+        </div>
+        <div>
+          <div style="width:150px;height:150px;border:1px solid #b7c9d0;background:#10242f;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+            <img src="assets/monogram-navy.svg" alt="SM reversed" style="width:100%;height:100%;display:block;filter:invert(1) sepia(1) saturate(0) brightness(2.2)"/>
+          </div>
+          <div style="margin-top:9px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#6d8794">Reversed &middot; on ink</div>
+        </div>
+      </div>
+
+      <!-- favicon sizes -->
+      <div>
+        <div style="display:flex;align-items:flex-end;gap:20px;padding:20px 22px;border:1px solid #b7c9d0;background:#dae6ea">
+          <div style="text-align:center"><img src="assets/monogram.svg" width="64" height="64" style="display:block;border:1px solid #c9d7dc"/><div style="margin-top:7px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.1em;color:#6d8794">64</div></div>
+          <div style="text-align:center"><img src="assets/monogram.svg" width="48" height="48" style="display:block;border:1px solid #c9d7dc"/><div style="margin-top:7px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.1em;color:#6d8794">48</div></div>
+          <div style="text-align:center"><img src="assets/monogram-32.svg" width="32" height="32" style="display:block;border:1px solid #c9d7dc"/><div style="margin-top:7px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.1em;color:#6d8794">32</div></div>
+          <div style="text-align:center"><img src="assets/monogram-32.svg" width="16" height="16" style="display:block;border:1px solid #c9d7dc"/><div style="margin-top:7px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.1em;color:#6d8794">16</div></div>
+          <div style="flex:1;text-align:right;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:#6d8794">Favicon &mdash;<br>legible to 32&sup2;</div>
+        </div>
+      </div>
+
+      <!-- spec -->
+      <div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:8px 0;border-top:1px solid #c9d7dc"><span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6d8794;width:110px">Format</span><span style="flex:1;border-bottom:1px dotted #b7c9d0;transform:translateY(-3px)"></span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#10242f">SVG + PNG</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:8px 0;border-top:1px solid #c9d7dc"><span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6d8794;width:110px">Stroke</span><span style="flex:1;border-bottom:1px dotted #b7c9d0;transform:translateY(-3px)"></span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#10242f">2.8 px hairline</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:8px 0;border-top:1px solid #c9d7dc;border-bottom:1px solid #c9d7dc"><span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6d8794;width:110px">Colour</span><span style="flex:1;border-bottom:1px dotted #b7c9d0;transform:translateY(-3px)"></span><span style="font-family:'Space Mono',monospace;font-size:12px;color:#10242f">#0f78ab / #10242f</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:28px;left:56px;right:56px;display:flex;align-items:baseline;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#6d8794"><span>Ref. SMN &middot; Rev. 2026</span><span>Working Dossier &middot; Identity</span></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:780}}"></script>
+</body>
+</html>

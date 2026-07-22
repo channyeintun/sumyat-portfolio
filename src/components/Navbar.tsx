@@ -32,13 +32,21 @@ export default function Navbar() {
         {/* Masthead identity */}
         <a
           href="#top"
-          className="group flex flex-col justify-center border-r border-line py-3 pr-5 sm:pr-8"
+          className="group flex items-center gap-3 border-r border-line py-3 pr-5 sm:pr-8"
         >
-          <span className="font-display text-lg font-semibold leading-none tracking-tight text-ink">
-            Su Myat Noe
-          </span>
-          <span className="label mt-1 text-stone">
-            Business Analyst<span className="text-accent">.</span>
+          <img
+            src="/brand/monogram-navy.svg"
+            alt=""
+            aria-hidden
+            className="h-8 w-8 shrink-0"
+          />
+          <span className="flex flex-col justify-center">
+            <span className="font-display text-lg font-semibold leading-none tracking-tight text-ink">
+              Su Myat Noe
+            </span>
+            <span className="label mt-1 text-stone">
+              Business Analyst<span className="text-accent">.</span>
+            </span>
           </span>
         </a>
 

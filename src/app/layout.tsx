@@ -22,10 +22,33 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const description =
+  "The working dossier of Su Myat Noe, an IT Business Analyst specializing in fintech: requirements, BPMN workflow modeling, and data-driven process improvement.";
+
+// Resolves relative OG/Twitter image URLs to absolute ones. Uses the custom
+// domain when set, else the Vercel deployment URL, else localhost for dev.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Su Myat Noe — IT Business Analyst / A Working Dossier",
-  description:
-    "The working dossier of Su Myat Noe, an IT Business Analyst specializing in fintech: requirements, BPMN workflow modeling, and data-driven process improvement.",
+  description,
+  openGraph: {
+    title: "Su Myat Noe — IT Business Analyst",
+    description,
+    type: "website",
+    images: [
+      { url: "/brand/social-share-card.png", width: 1200, height: 630 },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Su Myat Noe — IT Business Analyst",
+    description,
+    images: ["/brand/social-share-card.png"],
+  },
 };
 
 export default function RootLayout({

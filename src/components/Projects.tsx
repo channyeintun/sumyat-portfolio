@@ -8,6 +8,14 @@ import { projects, type Project } from "@/data/profile";
 
 const SHARED_NAME = "project-modal";
 
+// Case-file line-art glyphs, one per project (from the brand asset set).
+const GLYPHS: Record<string, string> = {
+  "financial-advisory-suite": "/brand/glyph-bpmn.svg",
+  "reporting-dashboards": "/brand/glyph-bars.svg",
+  "data-pipeline": "/brand/glyph-pipeline.svg",
+  "api-test-framework": "/brand/glyph-api.svg",
+};
+
 function prefersReducedMotion() {
   return (
     typeof window !== "undefined" &&
@@ -102,10 +110,20 @@ export default function Projects() {
                   viewTransitionName:
                     pendingId === project.id ? SHARED_NAME : undefined,
                 }}
-                className="group relative flex h-full w-full flex-col bg-paper p-7 text-left transition-colors duration-300 hover:bg-paper-3 focus:outline-none focus-visible:bg-paper-3 sm:p-8"
+                className="group relative flex h-full w-full flex-col overflow-hidden bg-paper p-7 text-left transition-colors duration-300 hover:bg-paper-3 focus:outline-none focus-visible:bg-paper-3 sm:p-8"
               >
+                {/* Case-file glyph — faint watermark, brightens on hover */}
+                {GLYPHS[project.id] && (
+                  <img
+                    src={GLYPHS[project.id]}
+                    alt=""
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-4 -right-4 h-32 w-32 opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.16]"
+                  />
+                )}
+
                 {/* Case number + metric */}
-                <div className="flex items-baseline justify-between">
+                <div className="relative z-10 flex items-baseline justify-between">
                   <span className="font-display text-5xl font-semibold leading-none text-ink/12 transition-colors group-hover:text-accent/25">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -114,19 +132,19 @@ export default function Projects() {
                   </span>
                 </div>
 
-                <span className="label mt-6 text-stone">
+                <span className="relative z-10 label mt-6 text-stone">
                   {project.category}
                 </span>
-                <h3 className="font-display mt-2 text-2xl font-semibold leading-tight text-ink">
+                <h3 className="relative z-10 font-display mt-2 text-2xl font-semibold leading-tight text-ink">
                   {project.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-ink-2">
+                <p className="relative z-10 mt-3 flex-1 text-[0.95rem] leading-relaxed text-ink-2">
                   {project.description}
                 </p>
 
                 {/* Tags */}
-                <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1">
+                <ul className="relative z-10 mt-6 flex flex-wrap gap-x-3 gap-y-1">
                   {project.tags.map((tag) => (
                     <li key={tag} className="mono text-[0.7rem] text-stone">
                       / {tag}
@@ -135,7 +153,7 @@ export default function Projects() {
                 </ul>
 
                 {/* Footer rule */}
-                <div className="mt-6 flex items-center justify-between border-t border-line pt-4">
+                <div className="relative z-10 mt-6 flex items-center justify-between border-t border-line pt-4">
                   <span className="mono text-xs text-ink">{project.timeline}</span>
                   <span className="label flex items-center gap-2 text-ink transition-colors group-hover:text-accent">
                     Open file

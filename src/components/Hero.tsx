@@ -15,8 +15,18 @@ export default function Hero() {
       id="top"
       className="relative scroll-mt-16 overflow-hidden border-b border-ink"
     >
+      {/* Bathymetric contour texture — sits faintly behind the title page */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-[0.06]"
+        style={{
+          backgroundImage: "url(/brand/hero-texture-lines.svg)",
+          backgroundSize: "1600px 1600px",
+        }}
+      />
+
       {/* Dossier header strip */}
-      <div className="border-b border-line">
+      <div className="relative z-10 border-b border-line">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2.5 sm:px-8">
           <span className="label text-ink">Working Dossier</span>
           <span className="label hidden text-stone sm:block">
@@ -29,7 +39,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-10 py-14 lg:grid-cols-[1.55fr_1fr] lg:gap-16 lg:py-20">
           {/* Editorial masthead */}
           <div className="flex flex-col">
@@ -123,7 +133,7 @@ export default function Hero() {
       </div>
 
       {/* Running toolkit ticker */}
-      <div className="overflow-hidden border-t border-ink bg-ink py-3">
+      <div className="relative z-10 overflow-hidden border-t border-ink bg-ink py-3">
         <div className="marquee-track flex w-max items-center gap-10 whitespace-nowrap">
           {[...technicalSkills, ...technicalSkills].map((skill, i) => (
             <span key={i} className="flex items-center gap-10">
