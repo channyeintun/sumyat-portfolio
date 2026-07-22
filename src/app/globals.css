@@ -7,16 +7,18 @@
    ============================================================ */
 
 :root {
-  --paper: #efe7d8;
-  --paper-2: #e7dcc8;
-  --paper-3: #ded1b9;
-  --ink: #1a1611;
-  --ink-2: #4b4335;
-  --stone: #8a7f6b;
-  --line: #c8bb9f;
-  --line-2: #d8cdb5;
-  --accent: #cf3a1a;
-  --accent-2: #a72c12;
+  /* Hydrographic / blueprint dossier — a monochromatic ocean-blue system.
+     Cool paper · deep ocean-navy ink · ocean-blue accent. */
+  --paper: #e7eef1;
+  --paper-2: #dae6ea;
+  --paper-3: #cadadf;
+  --ink: #10242f;
+  --ink-2: #3a5563;
+  --stone: #6d8794;
+  --line: #b7c9d0;
+  --line-2: #c9d7dc;
+  --accent: #0f78ab;
+  --accent-2: #0a567c;
 
   --background: var(--paper);
   --foreground: var(--ink);

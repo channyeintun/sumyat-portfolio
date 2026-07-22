@@ -27,10 +27,15 @@ export default function HeroPhoto() {
       <div className="group relative border border-ink bg-paper-2 p-2 shadow-[8px_8px_0_0_var(--ink)]">
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <div
-            className="h-full w-full bg-cover bg-top grayscale-[0.35] transition-all duration-700 [filter:sepia(0.18)_contrast(1.05)] group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:[filter:sepia(0)]"
+            className="h-full w-full bg-cover bg-top grayscale-[0.45] transition-all duration-700 [filter:contrast(1.05)_brightness(1.02)] group-hover:scale-[1.03] group-hover:grayscale-0"
             style={{ backgroundImage: `url(${PHOTO_SRC})` }}
             role="img"
             aria-label={`${profile.name} — ${profile.title}`}
+          />
+          {/* Cool duotone wash — ties the portrait to the ocean-blue theme; clears on hover */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-accent/15 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-0"
           />
           {/* Halftone-ish scanline overlay for a printed-plate feel */}
           <div
@@ -38,7 +43,7 @@ export default function HeroPhoto() {
             className="pointer-events-none absolute inset-0 mix-blend-multiply opacity-20"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(0deg, transparent 0 2px, rgba(26,22,17,0.5) 2px 3px)",
+                "repeating-linear-gradient(0deg, transparent 0 2px, rgba(16,36,47,0.5) 2px 3px)",
             }}
           />
         </div>
