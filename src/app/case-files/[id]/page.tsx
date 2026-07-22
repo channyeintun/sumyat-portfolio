@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProjectEvidence from "@/components/ProjectEvidence";
 import { profile, projects } from "@/data/profile";
 import { siteUrl } from "@/lib/site";
 
@@ -166,6 +167,8 @@ export default async function CaseFilePage({ params }: CaseFilePageProps) {
               </ul>
             </section>
           </div>
+
+          <ProjectEvidence evidence={project.evidence} />
 
           <ul className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t border-ink pt-4">
             {project.tags.map((tag) => (

@@ -73,6 +73,23 @@ export const softSkills = [
   "Teamwork",
 ];
 
+export type ProjectEvidence = {
+  kind: "Delivery record" | "Public work sample";
+  title: string;
+  description: string;
+  facts: { label: string; value: string }[];
+  images?: {
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }[];
+  sourceUrl: string;
+  sourceLabel: string;
+  note: string;
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -85,6 +102,7 @@ export type Project = {
   problem: string;
   approach: string[];
   impact: string[];
+  evidence: ProjectEvidence;
 };
 
 export const projects: Project[] = [
@@ -110,6 +128,20 @@ export const projects: Project[] = [
       "Kept releases aligned to stakeholder priorities across all five time zones.",
       "Reduced requirement-related rework through testable acceptance criteria.",
     ],
+    evidence: {
+      kind: "Delivery record",
+      title: "Requirements package on record",
+      description:
+        "The published résumé records the requirements package delivered for this engagement. Original client documents are not part of the public portfolio.",
+      facts: [
+        { label: "Volume", value: "50+ user stories" },
+        { label: "Formats", value: "Stories + functional specs" },
+        { label: "Collaboration", value: "5 global time zones" },
+      ],
+      sourceUrl: "/resume.pdf",
+      sourceLabel: "Open résumé source ↗",
+      note: "Résumé-backed delivery evidence; client requirement content remains unpublished.",
+    },
   },
   {
     id: "reporting-dashboards",
@@ -133,6 +165,30 @@ export const projects: Project[] = [
       "Replaced fragile manual spreadsheets with maintainable models.",
       "Improved the speed and confidence of financial decision-making.",
     ],
+    evidence: {
+      kind: "Public work sample",
+      title: "Singapore HDB resale market dashboard",
+      description:
+        "A separate public portfolio sample demonstrates the same dashboard discipline: turning a large property dataset into trend, location, pricing, and market-density views.",
+      facts: [
+        { label: "Dataset", value: "962K transactions" },
+        { label: "Views", value: "Trend + town + map" },
+        { label: "Tool", value: "Power BI" },
+      ],
+      images: [
+        {
+          src: "/evidence/hdb-resale-dashboard.png",
+          alt: "Power BI dashboard showing Singapore HDB resale price trends, town comparisons, transaction distribution, and a location map",
+          caption:
+            "Public sample · Singapore HDB resale market overview in Power BI",
+          width: 1417,
+          height: 797,
+        },
+      ],
+      sourceUrl: profile.portfolioUrl,
+      sourceLabel: "Open supporting portfolio deck ↗",
+      note: "Separate capability sample; this is not a Nexstack client deliverable.",
+    },
   },
   {
     id: "data-pipeline",
@@ -156,6 +212,38 @@ export const projects: Project[] = [
       "Improved data accuracy for complex financial calculations.",
       "Freed analyst time for higher-value analysis.",
     ],
+    evidence: {
+      kind: "Public work sample",
+      title: "Transformation and SQL work samples",
+      description:
+        "Two separate public samples show the mechanics behind repeatable reporting: a Power Query transformation workflow and a consolidated SQL customer-order view.",
+      facts: [
+        { label: "Power Query", value: "962,213 matched rows" },
+        { label: "SQL", value: "3-table consolidated view" },
+        { label: "Pattern", value: "Clean → model → query" },
+      ],
+      images: [
+        {
+          src: "/evidence/hdb-power-query-workflow.png",
+          alt: "Power Query editor showing a multi-step transformation workflow for Singapore HDB resale data",
+          caption:
+            "Public sample · Power Query data-wrangling and transformation steps",
+          width: 1882,
+          height: 765,
+        },
+        {
+          src: "/evidence/ecommerce-sql-view.png",
+          alt: "SQL statement creating a customer order summary view from orders, customers, and product items",
+          caption:
+            "Public sample · SQL view consolidating customer, order, and product data",
+          width: 447,
+          height: 347,
+        },
+      ],
+      sourceUrl: profile.portfolioUrl,
+      sourceLabel: "Open supporting portfolio deck ↗",
+      note: "Separate capability samples; these are not the Nexstack production pipeline.",
+    },
   },
   {
     id: "api-test-framework",
@@ -179,6 +267,20 @@ export const projects: Project[] = [
       "Validated the accuracy of complex financial calculations.",
       "Increased confidence in each release.",
     ],
+    evidence: {
+      kind: "Delivery record",
+      title: "API validation record",
+      description:
+        "The published résumé records Postman test design and execution for system APIs and backend services, including data-accuracy checks for complex financial calculations.",
+      facts: [
+        { label: "Tool", value: "Postman" },
+        { label: "Scope", value: "APIs + backend services" },
+        { label: "Result", value: "Fewer integration errors" },
+      ],
+      sourceUrl: "/resume.pdf",
+      sourceLabel: "Open résumé source ↗",
+      note: "Résumé-backed delivery evidence; client endpoints and response data remain unpublished.",
+    },
   },
 ];
 
