@@ -1,0 +1,60 @@
+# Su Myat Noe — IT Business Analyst
+
+> Su Myat Noe (nickname "Su") is an IT Business Analyst with 3+ years of fully
+> remote experience, specializing in financial technology. She translates
+> business needs into executable technical specifications and drives data-backed
+> process improvements. Based in Da Nang, Vietnam; available for remote roles
+> worldwide with one month's notice.
+
+## Summary
+
+- **Name:** Su Myat Noe (Su)
+- **Role:** IT Business Analyst / Business System Analyst
+- **Specialization:** Fintech — requirements management, BPMN workflow modeling, financial reporting & BI
+- **Experience:** 3+ years, fully remote, across 5 global time zones
+- **Location:** Da Nang, Vietnam (open to remote worldwide)
+- **Availability:** Open to opportunities, ~1 month notice
+- **Email:** sumyatnoe906@gmail.com
+- **LinkedIn:** https://linkedin.com/in/sumyatnoe99
+
+## Core skills
+
+Requirement elicitation & management, SQL and database querying, data
+visualization (Power BI), Python (Pandas) and statistics, Agile/Scrum, process
+modeling (BPMN), JIRA/Confluence/ClickUp, user stories and use cases, Lucidchart/
+Draw.io/Figma. Strengths in stakeholder management, cross-functional
+collaboration, problem solving, and negotiation.
+
+## Experience
+
+- **Business System Analyst — Alphared Solutions, Malaysia (Remote, Feb 2026–present).**
+- **Business Analyst — Nexstack, Singapore (Remote, Mar 2022–Feb 2025).** Gathered
+  and documented 50+ user stories and functional specs for financial advisory
+  products; ran Agile/Scrum delivery in JIRA; built API test cases in Postman;
+  built advanced Excel models and Power BI dashboards; used SQL and Python to
+  automate data pipelines, cutting manual reporting time by ~20%.
+- **QA Tester — Myanmar Institute of Business (Internship, Apr–Jun 2020).**
+
+## Selected work
+
+- **Financial Advisory Product Suite** — end-to-end requirements for a fintech
+  advisory platform; 50+ user stories across 5 time zones (JIRA, BPMN, Agile).
+- **Financial Reporting & Forecasting Dashboards** — advanced Excel models and
+  Power BI dashboards giving management real-time KPI visibility.
+- **Automated Data Pipeline** — SQL + Python (Pandas) ETL that cut manual
+  reporting effort ~20% and improved data accuracy.
+- **API Test Automation Framework** — Postman test cases that reduced integration
+  errors and validated complex financial calculations.
+
+## Education & credentials
+
+- B.C.Tech (Bachelor of Computer Technology), Computer University, Loikaw.
+- Certifications: Microsoft Business Analyst, IBM Data Analyst, Huawei Seeds for
+  the Future 2020, Foundations of Software Testing and Validation (University of
+  Leeds).
+- Languages: English (fluent), Burmese (native), Japanese/Korean (basic).
+
+## Contact
+
+For business analyst opportunities (remote or on-site), email
+sumyatnoe906@gmail.com or connect via https://linkedin.com/in/sumyatnoe99.

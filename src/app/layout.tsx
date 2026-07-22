@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Fraunces, Archivo, Space_Mono } from "next/font/google";
 import "./globals.css";
+import { profile } from "@/data/profile";
+import { siteUrl } from "@/lib/site";
+import StructuredData from "@/components/StructuredData";
 
 // Display: a high-contrast, characterful serif for editorial headlines.
 const fraunces = Fraunces({
@@ -22,30 +25,73 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const title = "Su Myat Noe — IT Business Analyst";
 const description =
   "The working dossier of Su Myat Noe, an IT Business Analyst specializing in fintech: requirements, BPMN workflow modeling, and data-driven process improvement.";
 
-// Resolves relative OG/Twitter image URLs to absolute ones. Uses the custom
-// domain when set, else the Vercel deployment URL, else localhost for dev.
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Su Myat Noe — IT Business Analyst / A Working Dossier",
+  title: {
+    default: `${title} / A Working Dossier`,
+    template: `%s — ${profile.name}`,
+  },
   description,
+  applicationName: "Su Myat Noe — Working Dossier",
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  publisher: profile.name,
+  category: "Business Analysis",
+  keywords: [
+    "Su Myat Noe",
+    "IT Business Analyst",
+    "Business Analyst",
+    "Business System Analyst",
+    "fintech business analyst",
+    "requirements elicitation",
+    "BPMN",
+    "user stories",
+    "Agile Scrum",
+    "Power BI",
+    "SQL",
+    "Python Pandas",
+    "data analysis",
+    "remote business analyst",
+    "Da Nang Vietnam",
+  ],
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Su Myat Noe — IT Business Analyst",
+    type: "profile",
+    title,
     description,
-    type: "website",
+    url: siteUrl,
+    siteName: "Su Myat Noe — Working Dossier",
+    locale: "en_US",
+    firstName: "Su Myat",
+    lastName: "Noe",
+    username: "sumyatnoe99",
     images: [
-      { url: "/brand/social-share-card.png", width: 1200, height: 630 },
+      {
+        url: "/brand/social-share-card.png",
+        width: 1200,
+        height: 630,
+        alt: `${title} — Working Dossier`,
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Su Myat Noe — IT Business Analyst",
+    title,
     description,
     images: ["/brand/social-share-card.png"],
   },
@@ -61,7 +107,10 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${archivo.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }
