@@ -1,5 +1,6 @@
 import { profile, technicalSkills } from "@/data/profile";
 import HeroPhoto from "./HeroPhoto";
+import WetInk from "./WetInk";
 
 const meta = [
   { k: "Discipline", v: "IT Business Analysis" },
@@ -59,9 +60,11 @@ export default function Hero() {
               className="animate-rise font-display text-[clamp(3.2rem,11vw,7.5rem)] font-semibold leading-[0.86] tracking-[-0.02em] text-ink"
               style={{ animationDelay: "80ms" }}
             >
-              Su Myat
-              <br />
-              <span className="italic text-accent">Noe.</span>
+              <WetInk>
+                Su Myat
+                <br />
+                <span className="italic text-accent">Noe.</span>
+              </WetInk>
             </h1>
 
             <p

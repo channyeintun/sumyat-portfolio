@@ -26,6 +26,15 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+// Chrome origin-trial token enabling the experimental HTML-in-Canvas API
+// (feature: HTMLInCanvas) for real visitors on supported Chrome — no browser
+// flag needed. Scoped to https://sumyatnoe.netlify.app; expiry 1792454400
+// (~Oct 2026). Powers the hero wordmark's light reflection (see WetInk); when
+// it lapses, that effect simply falls back to the plain wordmark. Tokens are
+// public by design (they live in the page head).
+const HTML_IN_CANVAS_ORIGIN_TRIAL =
+  "Am3cieUcf4BYtUzdvUTXiqHhWDRBJyZbwtziAb8lsc/a50cY4V06m3qCzyrbPysxtz0zDnMX6LeIPV1Ivch1qwsAAABueyJvcmlnaW4iOiJodHRwczovL3N1bXlhdG5vZS5uZXRsaWZ5LmFwcDo0NDMiLCJmZWF0dXJlIjoiSFRNTEluQ2FudmFzIiwiZXhwaXJ5IjoxNzkyNDU0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZX0=";
+
 const title = "Su Myat Noe — IT Business Analyst";
 const description =
   "The working dossier of Su Myat Noe, an IT Business Analyst specializing in fintech: requirements, BPMN workflow modeling, and data-driven process improvement.";
@@ -110,6 +119,10 @@ export default function RootLayout({
       className={`${fraunces.variable} ${archivo.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <meta
+          httpEquiv="origin-trial"
+          content={HTML_IN_CANVAS_ORIGIN_TRIAL}
+        />
         <StructuredData />
         <ScrollProgress />
         {children}
