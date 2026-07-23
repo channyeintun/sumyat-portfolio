@@ -38,10 +38,10 @@ export default function Contact() {
           {rows.map((row, index) => {
             const inner = (
               <>
-                <span className="label w-40 shrink-0 text-accent">
+                <span className="label w-36 shrink-0 text-accent sm:w-40">
                   {row.label}
                 </span>
-                <span className="mono text-base text-paper sm:text-lg">
+                <span className="mono min-w-0 break-words text-base text-paper sm:text-lg">
                   {row.value}
                 </span>
                 {row.href && (
